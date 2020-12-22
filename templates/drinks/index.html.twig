@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block head %}
+    <link href="{{ asset('style.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="flex-container">
+
+        {% for drink in drinks %}
+
+            <div class="table-row">
+                <div><span class="label">ID:</span> {{ drink.id }}</div>
+                <div><span class="label">Name:</span> {{ drink.name }}</div>
+                <div><span class="label">Alcoholic:</span> {{ drink.alcoholic }}</div>
+                <div><span class="label">Thumbnail:</span> <a href="{{ drink.thumbnail }}"
+                                                              target="_blank">{{ drink.thumbnail }}</a></div>
+                <div><span class="label">Category:</span> {{ drink.categoryName }}</div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
