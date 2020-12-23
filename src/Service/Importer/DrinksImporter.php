@@ -35,8 +35,9 @@ class DrinksImporter
         $this->categoriesImporter->import();
         $drinksByCategories = $this->drinksByCategoryProvider->provide();
 
-        $ids = [];
         foreach ($drinksByCategories as $categoryId => $drinks) {
+            $ids = [];
+
             /** @var CategoryRepository $categoryRepo */
             $categoryRepo = $this->entityManager->getRepository(Category::class);
             $category = $categoryRepo->find($categoryId);
@@ -63,7 +64,7 @@ class DrinksImporter
         foreach ($parsedDrinks as $drink) {
             $this->entityManager->persist(
                 (new Drinks())
-                    ->setDrinkId((int)$drink['idDrink'])
+                    ->setId((int)$drink['idDrink'])
                     ->setName($drink['strDrink'])
                     ->setCategory($category)
                     ->setAlcoholic($drink['strAlcoholic'])

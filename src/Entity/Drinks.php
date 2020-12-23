@@ -16,15 +16,10 @@ class Drinks
      * https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/basic-mapping.html#identifier-generation-strategies
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="integer")
      */
     private int $id;
-
-    /**
-     * @ORM\Column(type="integer", length=255)
-     */
-    private int $drinkId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -62,14 +57,9 @@ class Drinks
         return $this->id;
     }
 
-    public function getDrinkId(): int
+    public function setId(int $id): Drinks
     {
-        return $this->drinkId;
-    }
-
-    public function setDrinkId(int $drinkId): Drinks
-    {
-        $this->drinkId = $drinkId;
+        $this->id = $id;
         return $this;
     }
 
